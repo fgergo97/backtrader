@@ -246,7 +246,7 @@ class YahooFinanceData(YahooFinanceCSVData):
         ('period', 'd'),
         ('reverse', False),
         ('urlhist', 'https://finance.yahoo.com/quote/{}/history'),
-        ('urldown', 'https://query1.finance.yahoo.com/v7/finance/download'),
+        ('urldown', 'https://query1.finance.yahoo.com/v8/finance/chart/{}'),
         ('retries', 3),
     )
 
@@ -307,6 +307,7 @@ class YahooFinanceData(YahooFinanceCSVData):
 
         urlargs = []
         posix = date(1970, 1, 1)
+        '''
         if self.p.todate is not None:
             period2 = (self.p.todate.date() - posix).total_seconds()
             urlargs.append('period2={}'.format(int(period2)))
@@ -314,6 +315,7 @@ class YahooFinanceData(YahooFinanceCSVData):
         if self.p.todate is not None:
             period1 = (self.p.fromdate.date() - posix).total_seconds()
             urlargs.append('period1={}'.format(int(period1)))
+        '''
 
         intervals = {
             bt.TimeFrame.Days: '1d',
